@@ -1,5 +1,6 @@
 ﻿using Domain.Entities;
 using Domain.Interfaces;
+using Domain.Enums;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace Infrastructure.Data
 
         public Task<List<User>> GetUsers()
         {
-            return _context.Users.ToListAsync();
+            return _context.Users.Where(u => u.Status == Status.Active).ToListAsync();
         }
     }
 }
