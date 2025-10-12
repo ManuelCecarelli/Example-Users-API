@@ -19,9 +19,9 @@ namespace Infrastructure.Data
             _context = context;
         }
 
-        public Task<List<User>> GetUsers()
+        public async Task<List<User>> GetUsers()
         {
-            return _context.Users.Where(u => u.Status == Status.Active).ToListAsync();
+            return await _context.Users.Where(u => u.Status == Status.Active).ToListAsync();
         }
     }
 }
