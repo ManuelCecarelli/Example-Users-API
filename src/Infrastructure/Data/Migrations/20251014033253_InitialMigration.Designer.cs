@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20251012180939_InitialMigration")]
+    [Migration("20251014033253_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -20,10 +20,10 @@ namespace Infrastructure.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.13")
-                .HasAnnotation("Relational:MaxIdentifierLength", 64);
+                .HasAnnotation("ProductVersion", "8.0.20")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("Domain.Entities.User", b =>
                 {
@@ -31,32 +31,32 @@ namespace Infrastructure.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreationDate")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("HashedPassword")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("LastUpdate")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("ProfileImageUrl")
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Role")
                         .HasColumnType("int");
@@ -72,7 +72,7 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreationDate = new DateTime(2025, 10, 12, 18, 9, 38, 704, DateTimeKind.Utc).AddTicks(4630),
+                            CreationDate = new DateTime(2025, 10, 14, 3, 32, 52, 681, DateTimeKind.Utc).AddTicks(3907),
                             Email = "manu@gmail.com",
                             FirstName = "Manuel",
                             HashedPassword = "manu1234",
@@ -83,7 +83,7 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 2,
-                            CreationDate = new DateTime(2025, 10, 12, 18, 9, 38, 704, DateTimeKind.Utc).AddTicks(4639),
+                            CreationDate = new DateTime(2025, 10, 14, 3, 32, 52, 681, DateTimeKind.Utc).AddTicks(3913),
                             Email = "fede@gmail.com",
                             FirstName = "Federico",
                             HashedPassword = "fede1234",
@@ -94,7 +94,7 @@ namespace Infrastructure.Data.Migrations
                         new
                         {
                             Id = 3,
-                            CreationDate = new DateTime(2025, 10, 12, 18, 9, 38, 704, DateTimeKind.Utc).AddTicks(4641),
+                            CreationDate = new DateTime(2025, 10, 14, 3, 32, 52, 681, DateTimeKind.Utc).AddTicks(3914),
                             Email = "viky@gmail.com",
                             FirstName = "Victoria",
                             HashedPassword = "viky1234",
