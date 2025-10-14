@@ -55,4 +55,22 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler(appBuilder =>
+    {
+        appBuilder.Run(async context =>
+        {
+            context.Response.StatusCode = 500;
+            context.Response.ContentType = "text/plain";
+
+            var error = context.Features.Get<Microsoft.AspNetCore.Diagnostics.IExceptionHandlerFeature>()?.Error;
+            if (error != null)
+            {
+                await context.Response.WriteAsync($"Error: {error.Message}\n\n{error.StackTrace}");
+            }
+        });
+    });
+}
+
 app.Run();
