@@ -19,6 +19,11 @@ namespace Infrastructure.Data
             _context = context;
         }
 
+        public async Task<User?> GetByEmail(string email)
+        {
+            return await _context.Users.Where(u => u.Email == email).FirstOrDefaultAsync();
+        }
+
         public async Task<List<User>> GetUsers()
         {
             return await _context.Users.Where(u => u.Status == Status.Active).ToListAsync();

@@ -16,7 +16,8 @@
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "ConnectionStrings__DefaultConnection": "Server=manudb1.database.windows.net;Database=users1;User Id=firstAdmin;Password=manu.1234;"
+        "ConnectionStrings__DefaultConnection": "Server=manudb1.database.windows.net;Database=users1;User Id=firstAdmin;Password=manu.1234;",
+        "Authentication__SecretForKey": "thisisthesecretforgeneratingakey(mustbeatleast32bitlong)"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:7283;http://localhost:5146"

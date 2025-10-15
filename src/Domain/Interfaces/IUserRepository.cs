@@ -10,5 +10,6 @@ namespace Domain.Interfaces
     public interface IUserRepository
     {
         Task<List<User>> GetUsers();
+        Task<User?> GetByEmail(string email);
     }
 }
