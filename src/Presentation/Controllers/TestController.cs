@@ -7,21 +7,21 @@ namespace Presentation.Controllers
     [Route("[controller]")]
     public class TestController : ControllerBase
     {
-        [HttpGet]
+        [HttpGet("client")]
         [Authorize]
         public ActionResult<string> TestNoRoleEndpoint()
         {
             return "Accediste al endpoint protegido general(nivel de cliente)";
         }
 
-        [HttpGet]
+        [HttpGet("employee")]
         [Authorize(Roles = "Employee")]
         public ActionResult<string> TestEmployeeEndpoint()
         {
             return "Accediste al endpoint de nivel de empleado";
         }
 
-        [HttpGet]
+        [HttpGet("admin")]
         [Authorize(Roles = "Admin")]
         public ActionResult<string> TestAdminEndpoint()
         {
