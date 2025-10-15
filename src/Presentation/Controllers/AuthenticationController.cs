@@ -18,9 +18,17 @@ namespace Presentation.Controllers
         [HttpPost]
         public async Task<ActionResult<string>> Authenticate([FromBody] AuthenticationCredentialsDTO authenticationCredentialsDTO)
         {
-            string newToken = await _customAuthenticationService.Authenticate(authenticationCredentialsDTO);
+            try
+            {
+                string newToken = await _customAuthenticationService.Authenticate(authenticationCredentialsDTO);
+                return newToken;
+            }
+            catch (Exception ex)
+            {
+                return Unauthorized(ex.Message);
+            }
 
-            return newToken;
+            
         }
     }
 }
