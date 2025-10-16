@@ -27,8 +27,6 @@ namespace Presentation.Controllers
             {
                 return Unauthorized(ex.Message);
             }
-
-            
         }
     }
 }
