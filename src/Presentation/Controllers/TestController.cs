@@ -7,6 +7,13 @@ namespace Presentation.Controllers
     [Route("[controller]")]
     public class TestController : ControllerBase
     {
+        private readonly IConfiguration _config;
+
+        public TestController(IConfiguration config)
+        {
+            _config = config;
+        }
+
         [HttpGet("client")]
         [Authorize]
         public ActionResult<string> TestNoRoleEndpoint()
@@ -26,6 +33,13 @@ namespace Presentation.Controllers
         public ActionResult<string> TestAdminEndpoint()
         {
             return "Accediste al endpoint de nivel de administrador";
+        }
+
+        [HttpGet("secret")]
+        public ActionResult<string> TestSecretValueEndpoint()
+        {
+            var testSecretValue = _config["TestSecretValue"];
+            return testSecretValue ?? "";
         }
     }
 }
