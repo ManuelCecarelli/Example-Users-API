@@ -9,6 +9,12 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//Requiere instalar el paquete nuget Azure.Extensions.AspNetCore.Configurations.Secrets
+/*builder.Configuration.AddAzureKeyVault(
+ *      new Uri($"https://[my-azure-key-vault-name].vault.azure.net/"),
+ *      new DefaultAzureCredential());
+ * );*/
+
 // Add services to the container.
 
 builder.Services.AddControllers();
