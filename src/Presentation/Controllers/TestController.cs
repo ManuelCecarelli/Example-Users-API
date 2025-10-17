@@ -38,7 +38,7 @@ namespace Presentation.Controllers
         [HttpGet("secret")]
         public ActionResult<string> TestSecretValueEndpoint()
         {
-            var testSecretValue = _config["TestSecretValue"];
+            var testSecretValue = _config["NuevoSecreto"];
             return testSecretValue ?? "";
         }
     }
